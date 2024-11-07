@@ -1,0 +1,452 @@
+/* Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --bg: #F9FAFA;
+  --bg-card: #FFFFFF;
+  --bg-card-bonus: #F3F3F3;
+  --bg-line: #0F0F0F;
+  --bg-button: #616161;
+  --text-header: #404040;
+  --text-bonus: #5E6166;
+  --text-new: #68CB6C;
+  --shadow: #00000029;
+  --border-new: #0000001E;
+  --blue: #429BF4;
+  --hover-popup: #DAECFE;
+  --hover-button: #3082D4;
+  --rating-text: #8F8F8F;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: normal normal bold 28px/32px Roboto;
+  background-color: var(--bg);
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  background-color: transparent;
+  border: none; 
+}
+
+.header-line {
+  width: 100%;
+  height: 10px;
+  background: var(--bg-line) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 2px 5px var(--shadow);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.header {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-header);
+}
+
+.casino-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.casino-count {
+  color: var(--text-header);
+  font: normal normal normal 14px/20px Roboto;
+}
+
+.all-casinos {
+  color: var(--text-header);
+  font: normal normal bold 18px/24px Roboto;
+}
+
+.casino-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.casino-card {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-card);
+  padding: 15px 20px;
+  box-shadow: 0px 1px 6px var(--shadow);
+  border-radius: 6px;
+  transition: transform 0.2s;
+}
+
+.casino-logo {
+  width: 70px;
+  height: 46px;
+  margin-right: 15px;
+  transition: opacity 0.5s;
+  cursor: pointer;
+}
+
+.casino-logo:hover {
+  opacity: 0.8;
+} 
+
+.casino-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+}
+
+.casino-name {
+  text-align: left;
+  font: normal normal normal 15px/18px Roboto;
+  letter-spacing: 0px;
+  color: var(--blue);
+  transition:  color 0.5s ease-in-out; 
+  cursor: pointer;
+}
+
+.casino-name:hover {
+  color: var(--hover-button);
+}
+
+.new-label {
+  font: normal normal bold 11px/18px Roboto;
+  letter-spacing: 0px;
+  color: var(--text-new);
+  padding: 1px 5px;
+  border: 1px solid var(--border-new);
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+.casino-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  font: normal normal normal 12px/20px Roboto;
+  letter-spacing: 0px;
+  color: var(--rating-text);
+}
+
+.casino-rating p {
+  color: var(--text-header);
+}
+
+.casino-rating-usa {
+  width: 20px;
+  height: 14px;
+}
+
+.casino-details {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  max-width: 327px;
+  width: 100%;
+}
+
+.casino-bonuses {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-right: auto;
+  gap: 8px;
+}
+
+.bonus {
+  background: var(--bg-card-bonus) 0% 0% no-repeat padding-box;
+  color: var(--text-bonus);
+  font: normal normal normal 13px/20px Roboto;
+  padding: 4px 20px;
+  border-radius: 13px;
+  align-self: flex-start;
+  transition: background-color 0.5s;
+  cursor: pointer;
+}
+
+.bonus:hover {
+  background-color: var(--hover-popup);
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  transform: translateX(12.5%);
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.popup-content {
+  position: relative;
+  top: -5px;
+  width: 300px;
+  padding: 15px 20px;
+  background-color: var(--bg-card);
+  box-shadow: 0px 1px 6px var(--shadow);
+  border-radius: 6px;
+  text-align: left;
+  z-index: 5;
+}
+
+.popup-content::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 8px 8px;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+  z-index: 1;
+}
+
+.popup-content::after {
+  content: "";
+  position: absolute;
+  top: -10px; 
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 10px 10px; 
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.2) transparent; 
+  opacity: 0.1;
+  z-index: 0; 
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.popup-title {
+  color: var(--text-header);
+  font-size: 14px;
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 24px;
+  color: #aaa;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+.popup-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.popup-body span {
+  color: var(--rating-text);
+}
+
+.popup-body-description {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 5px;
+}
+
+.popup-body-description {
+  display: flex;
+  font: normal normal normal 15px/18px Roboto;
+  letter-spacing: 0px;
+  color: var(--text-header);
+}
+
+.popup-body-info {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 8px;
+}
+
+.popup-info-key {
+  color: var(--rating-text);
+}
+
+.popup-info-value {
+  text-align: left;
+}
+
+.promo-code {
+  padding: 4px;
+  border-radius: 4px;
+  border: 2px dashed var(--rating-text);
+  font-size: 16px;
+  text-align: center;
+  color: var(--text-bonus);
+  cursor: pointer;
+}
+
+.popup-info-value.free {
+  color: var(--text-new);
+}
+
+.copy-successful {
+  display: none;
+  gap: 5px;
+  position: absolute;
+  top: -8px;
+  left: 12.5%;
+  padding: 15px 20px;
+  background-color: var(--bg-card);
+  box-shadow: 0px 1px 6px var(--shadow);
+  border-radius: 6px;
+  text-align: left;
+  z-index: 5;
+  font: normal normal normal 15px/18px Roboto;
+  transform: rotate(180deg);
+}
+
+.copy-successful * {
+  transform: rotate(180deg);
+}
+
+.copy-successful::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+  z-index: 1;
+}
+
+.copy-successful::after {
+  content: "";
+  position: absolute;
+  top: -12px; 
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 12px 12px; 
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.2) transparent; 
+  opacity: 0.1;
+  z-index: 0; 
+}
+
+
+.visit-button {
+  text-align: center;
+  font: normal normal normal 11px/20px Roboto;
+  letter-spacing: 0.55px;
+  color: var(--bg-card);
+  padding: 8px 20px;
+  background: var(--blue);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.visit-button:hover {
+  background-color: var(--hover-button);
+}
+
+.more-casinos {
+  display: none;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.btn-load-more {
+  width: 100%;
+  background: var(--bg-card);
+  margin-top: 15px;
+  padding: 14px 0;
+  font: normal normal normal 14px/18px Roboto;
+  border: 1px solid var(--blue);
+  border-radius: 23px;
+  text-align: center;
+  color: var(--blue);
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-load-more:hover {
+  background-color: var(--hover-button);
+  color: var(--bg-card);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+  
+  .casino-card {
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .casino-details {
+    flex-direction: column;
+    align-items: center;
+    margin: 10px auto;
+  }
+
+  .casino-logo {
+    width: 60px;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+
+  .visit-button {
+    align-self: stretch;
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .casino-name {
+    font-size: 14px;
+  }
+
+  .casino-rating p {
+    font-size: 10px;
+  }
+
+  .btn-load-more {
+    font-size: 12px;
+    padding: 12px 0;
+  }
+
+  .mode-button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
